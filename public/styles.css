@@ -1,0 +1,460 @@
+/* Unified color palette for a minimal and cohesive design */
+:root {
+    --bg: #f4f4f4; /* Light gray background */
+    --text: #333333; /* Dark gray text */
+    --accent: #007acc; /* Blue accent */
+    --accent-hover: #005f99; /* Darker blue for hover */
+    --card-bg: #ffffff; /* White for cards */
+    --card-border: #dddddd; /* Light gray for borders */
+    --button-bg: var(--accent);
+    --button-text: #ffffff; /* White text for buttons */
+    --button-hover: var(--accent-hover);
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    --font: 'Arial', sans-serif; /* Clean sans-serif font */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    transition: background 0.3s, color 0.3s;
+    position: relative;
+    overflow-x: hidden;
+}
+
+main {
+    flex: 1;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 260px;
+    background: #222;
+    color: #fff;
+    padding: 20px 0 0 0;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.04);
+}
+
+.sidebar h2 {
+    text-align: center;
+    font-size: 1.3em;
+    margin-bottom: 1em;
+    font-weight: 400;
+}
+
+.folder-tree {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.folder {
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    display: block;
+    position: relative;
+    padding-left: 18px;
+}
+
+.folder::before {
+    content: '\25B6'; /* right-pointing triangle */
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-size: 0.9em;
+    transition: transform 0.2s;
+}
+
+.folder.collapsed::before {
+    transform: rotate(0deg);
+}
+
+.folder.expanded::before {
+    transform: rotate(90deg);
+}
+
+.folder + ul {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+.folder.collapsed + ul {
+    display: none;
+}
+
+.file {
+    margin-left: 20px;
+    cursor: pointer;
+    display: block;
+    padding: 3px 0;
+    color: #b3e5fc;
+    transition: color 0.2s;
+}
+
+.file:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.content {
+    flex: 1;
+    padding: 40px;
+    background: #fff;
+    overflow-y: auto;
+}
+
+#note-content pre {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 6px;
+    font-size: 1em;
+    white-space: pre-wrap;
+}
+
+/* Dark mode toggle */
+.dark-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+
+.dark-toggle input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+body.dark {
+    background: #181818;
+    color: #e0e0e0;
+}
+
+body.dark .sidebar {
+    background: #181818;
+    color: #e0e0e0;
+}
+
+body.dark .content {
+    background: #232323;
+    color: #e0e0e0;
+}
+
+body.dark .file {
+    color: #90caf9;
+}
+
+body.dark .file:hover {
+    color: #fff;
+}
+
+body.dark #note-content pre {
+    background: #232323;
+    color: #e0e0e0;
+}
+
+.iframe-note-container {
+    width: 100%;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.iframe-note-container iframe {
+    flex: 1 1 auto;
+    width: 100%;
+    min-height: 60vh;
+    height: 100%;
+    border: none;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.external-note-btn {
+    margin: 12px auto 0 auto;
+    display: inline-block;
+    padding: 0.5em 1.2em;
+    background: #1976d2;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.external-note-btn:hover {
+    background: #1251a3;
+}
+
+@media (max-width: 700px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        box-shadow: none;
+    }
+
+    .content {
+        padding: 20px;
+    }
+}
+
+.hero {
+    text-align: center;
+    margin: 2rem 0 1.5rem 0;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    color: var(--accent);
+    margin-bottom: 0.2em;
+    letter-spacing: 1px;
+}
+
+.hero-intro {
+    color: #555555; /* Medium gray for intro text */
+    font-size: 1.1rem;
+    margin-top: 1em;
+}
+
+.hero-buttons button {
+    background: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: 6px;
+    margin: 0 0.5em;
+    padding: 0.7em 1.5em;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    box-shadow: var(--shadow);
+}
+
+.hero-buttons button:hover {
+    background: var(--button-hover);
+}
+
+.search-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0 1.5rem 0;
+}
+
+.search-bar {
+    width: 350px;
+    max-width: 90vw;
+    padding: 0.8em 1em;
+    border-radius: 8px;
+    border: 1px solid var(--card-border);
+    background: var(--card-bg);
+    color: var(--text);
+    font-size: 1.1rem;
+    font-family: var(--font);
+    outline: none;
+    margin-bottom: 0.5em;
+}
+
+.search-bar:focus {
+    border-color: var(--accent);
+}
+
+.search-hint {
+    color: #777777; /* Light gray for hint text */
+    font-size: 0.95em;
+}
+
+.notes-preview {
+    margin: 2rem 0;
+}
+
+.notes-cards {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.note-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    padding: 1.2em 1.5em;
+    min-width: 220px;
+    max-width: 270px;
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.note-title {
+    font-weight: bold;
+    color: var(--accent);
+    margin-bottom: 0.3em;
+}
+
+.note-tags {
+    font-size: 0.95em;
+    color: var(--accent);
+    margin-bottom: 0.5em;
+}
+
+.note-preview {
+    color: #666666; /* Medium gray for preview text */
+    font-size: 0.98em;
+    margin-bottom: 1em;
+}
+
+.note-actions button {
+    background: none;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 5px;
+    margin-right: 0.5em;
+    padding: 0.3em 0.8em;
+    font-size: 0.95em;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.note-actions button:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+.features-section {
+    margin: 2.5rem 0 1.5rem 0;
+    text-align: center;
+}
+
+.features-list {
+    display: inline-block;
+    text-align: left;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+}
+
+.features-list li {
+    margin: 0.5em 0;
+    font-size: 1.08em;
+    color: var(--text);
+}
+
+.about-section {
+    margin: 2.5rem 0 1.5rem 0;
+    text-align: center;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5em;
+    margin-top: 1em;
+}
+
+.about-photo {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    border: 2px solid var(--accent);
+}
+
+.about-socials a {
+    color: var(--accent);
+    text-decoration: none;
+    margin: 0 0.3em;
+    font-size: 1.1em;
+}
+
+.about-socials a:hover {
+    text-decoration: underline;
+}
+
+.tech-stack-section {
+    margin: 2.5rem 0 1.5rem 0;
+    text-align: center;
+}
+
+.tech-stack-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2em;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+.tech-stack-grid span {
+    background: var(--card-bg);
+    color: var(--accent);
+    border-radius: 6px;
+    padding: 0.5em 1.2em;
+    font-size: 1.05em;
+    border: 1px solid var(--card-border);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+    text-align: center;
+    /* background-color: var(--card-bg); */
+    padding: 1em 0;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+    color: #777777; /* Light gray for footer text */
+    font-size: 1em;
+}
+
+.footer-links a {
+    color: var(--accent);
+    text-decoration: none;
+    margin: 0 0.3em;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* Subtle animated background: floating code snippets */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        120deg,
+        transparent 0 40px,
+        #007acc11 40px 80px,
+        transparent 80px 120px
+    );
+    opacity: 0.12;
+    animation: float-bg 18s linear infinite;
+}
+
+@keyframes float-bg {
+    0% { background-position: 0 0; }
+    100% { background-position: 200px 400px; }
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+    .notes-cards { flex-direction: column; align-items: center; }
+    .about-content { flex-direction: column; }
+    .tech-stack-grid { flex-direction: column; }
+}

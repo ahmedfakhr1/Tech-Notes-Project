@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="dark-toggle">
+                <input type="checkbox" id="darkModeToggle">
+                <label for="darkModeToggle">Dark Mode</label>
+            </div>
+            <h2>Notes</h2>
+            <ul class="folder-tree">
+                <li>
+                    <span class="folder">C#</span>
+                    <ul>
+                        <li><span class="file" data-file="csharp-intro">Introduction.md</span></li>
+                        <li><span class="file" data-file="csharp-advanced">Advanced.md</span></li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="folder">.NET Core</span>
+                    <ul>
+                        <li><span class="file" data-file="dotnetcore-gettingstarted">GettingStarted.md</span></li>
+                        <li><span class="file" data-file="dotnetcore-webapi">WebAPI.md</span></li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="folder">EF Core</span>
+                    <ul>
+                        <li><span class="file" data-file="efcore-module-2">M2 - Module 2</span></li>
+                        <li><span class="file" data-file="efcore-module-3">M3 - Module 3</span></li>
+                        <li><span class="file" data-file="efcore-m4-tracking">M4 - Tracking and Saving Data</span></li>
+                        <li><span class="file" data-file="efcore-m5-migrations">M5 - Migrations</span></li>
+                        <li><span class="file" data-file="efcore-m6-one-many">M6 - One-to-Many Relationship</span></li>
+                        <li><span class="file" data-file="efcore-m7-logging">M7 - Logging SQL & EF Core Activity</span></li>
+                        <li>
+                            <span class="folder">M8 - Working with Related Data</span>
+                            <ul>
+                                <li><span class="file" data-file="efcore-m8-adding-related">Adding Related Data</span></li>
+                                <li><span class="file" data-file="efcore-m8-eager-loading">Eager Loading of Related Data in Queries</span></li>
+                                <li><span class="file" data-file="efcore-m8-projection">Projection of Related Data in Queries</span></li>
+                                <li><span class="file" data-file="efcore-m8-loading-in-memory">Loading Related Data for Objects Already In-Memory</span></li>
+                                <li><span class="file" data-file="efcore-m8-filtering">Using Related Data to Filter Objects</span></li>
+                                <li><span class="file" data-file="efcore-m8-modifying">Modifying Related Data</span></li>
+                                <li><span class="file" data-file="efcore-m8-deleting">Deleting Within Graphs</span></li>
+                            </ul>
+                        </li>
+                        <li><span class="file" data-file="efcore-m9-many-to-many">M9 - Many-to-Many Relationships</span></li>
+                        <li><span class="file" data-file="efcore-m10-one-to-one">M10 - One-to-One Relationship</span></li>
+                        <li>
+                            <span class="folder">M11 - SQL, Views and Stored Procedures</span>
+                            <ul>
+                                <li><span class="file" data-file="efcore-m11-overview">Overview</span></li>
+                                <li><span class="file" data-file="efcore-m11-querying-sql">1 - Querying with SQL</span></li>
+                                <li><span class="file" data-file="efcore-m11-adding-storedprocedures">3 - Adding Stored Procedures & Other DB Objects with Migrations</span></li>
+                                <li><span class="file" data-file="efcore-m11-querying-scalars">4 - Querying for Scalars and Non-Entity Types</span></li>
+                                <li><span class="file" data-file="efcore-m11-views-keyless">5 - Views - Keyless Entities</span></li>
+                                <li><span class="file" data-file="efcore-m11-nonquery-sql">6 - Non-Query SQL Commands (Insert - Update - Delete)</span></li>
+                                <li><span class="file" data-file="efcore-m11-override-dbset">7 - Overriding Default Add, Update, Remove DbSet Methods with Stored Procedures</span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+        <main class="content">
+            <section class="hero">
+                <h1>Ahmed's Dev Notes</h1>
+                <p>📓 Clean. Personal. Searchable.</p>
+                <p>"Sharing my code journey — one bug at a time."</p>
+                <div class="hero-buttons">
+                    <button onclick="window.open('https://github.com/ahmedfakhr1', '_blank')">GitHub</button>
+                    <button onclick="window.open('https://afakhrportfolio.netlify.app/')">About Me</button>
+                </div>
+                <p class="hero-intro">From OOP principles I remind myself of daily, to the little tricks that make coding fun—this is my evolving dev brain.</p>
+            </section>
+
+            <!-- 🔍 Search Bar Component -->
+            <!-- <section class="search-section">
+                <input type="text" class="search-bar" placeholder="Search anything…" />
+                <div class="search-hint">(React, .NET middleware, SQL joins, etc.)</div>
+            </section> -->
+
+            <!-- 📚 Notes Preview Section -->
+            <!-- <section class="notes-preview">
+                <h2>Highlighted Notes</h2>
+                <div class="notes-cards">
+                    <div class="note-card">
+                        <div class="note-title">LINQ Cheat Sheet</div>
+                        <div class="note-tags">#C# #.NET #Queries</div>
+                        <div class="note-preview">A quick reference for LINQ queries with examples...</div>
+                        <div class="note-actions">
+                            <button>Copy Code</button>
+                            <button>Share</button>
+                            <button>View Full Note</button>
+                        </div>
+                    </div>
+                    <div class="note-card">
+                        <div class="note-title">Docker Essentials</div>
+                        <div class="note-tags">#DevOps #Docker</div>
+                        <div class="note-preview">Common Docker commands and troubleshooting tips...</div>
+                        <div class="note-actions">
+                            <button>Copy Code</button>
+                            <button>Share</button>
+                            <button>View Full Note</button>
+                        </div>
+                    </div>
+                    <div class="note-card">
+                        <div class="note-title">OOP Principles</div>
+                        <div class="note-tags">#OOP #Design</div>
+                        <div class="note-preview">SOLID, DRY, KISS, and other core principles explained...</div>
+                        <div class="note-actions">
+                            <button>Copy Code</button>
+                            <button>Share</button>
+                            <button>View Full Note</button>
+                        </div>
+                    </div>
+                </div>
+            </section> -->
+
+            <!-- ⚙️ Features Section
+            <section class="features-section">
+                <h2>Features</h2>
+                <ul class="features-list">
+                    <li>📌 Pin notes for quick access</li>
+                    <li>🔖 Tag-based organization</li>
+                    <li>🌙 Auto dark mode</li>
+                    <li>🔍 Full-text search</li>
+                    <li>🔄 GitHub synced markdown</li>
+                </ul>
+            </section> -->
+
+            <!-- 👨‍💻 About Me Section -->
+            <section class="about-section">
+                <h2>About Me</h2>
+                <div class="about-content" style="display: flex; align-items: center; gap: 1.5em; position: relative;">
+                    <div style="display: flex; flex-direction: column; align-items: center; position: relative;">
+                        <img src="IMG_1497.jpg" alt="Ahmed's photo" class="about-photo" style="z-index: 2;" />
+                        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEh44dZlIGOSDh76UPRb2amaSZ-0wBXhW-GKkPUj7yjnRZ3cccx9iXxR6GgNq39L9TrD2ReWRGDzGfVoexO1LkoBPMObVwq7gepKclkgTeZtEBiC6RamPHc9VkzhlO-Ynq12h44MKuNJwa798Z_nl1-20fkP25to2iIPrH_MDsj2M1kdAaNMM8YjPvqa=w1200-h630-p-k-no-nu" alt="Faculty of Engineering Ain Shams University Logo" class="about-photo" style="position: absolute; top: 50px; left: -30px; z-index: 1;" />
+                    </div>
+                    <div>
+                        <p>Hey, I’m Ahmed. I write code and take notes so future me doesn’t lose it.</p>
+                        <div class="about-socials">
+                            <a href="https://github.com/ahmedfakhr1" target="_blank">GitHub</a> |
+                            <a href="https://www.linkedin.com/in/ahmed-fakhreldin/">LinkedIn</a> |
+                            <a href="mailto:ahmedfakhr59@email.com">Email</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 🧩 Tech Stack Section -->
+            <!-- <section class="tech-stack-section">
+                <h2>Tech Stack</h2>
+                <div class="tech-stack-grid">
+                    <span>C#</span>
+                    <span>JavaScript</span>
+                    <span>ASP.NET Core</span>
+                    <span>EF Core</span>
+                    <span>Git</span>
+                    <span>SQL</span>
+                </div>
+            </section> -->
+
+            <!-- 📝 Footer -->
+            <footer class="footer">
+                © 2025 Ahmed’s Notes • Made with ☕ & 💻
+                <span class="footer-links">
+                    <a href="https://buymeacoffee.com/ahmedfakhr">Buy me a coffee</a>
+                </span>
+            </footer>
+
+            
+        </main>
+    </div>
+    <script>
+    // Simple note content (replace with AJAX/fetch if you want to load from files)
+    const notes = {
+        'csharp-intro': '# C# Introduction\n\nThis is an introduction to C#.',
+        'csharp-advanced': '# C# Advanced\n\nAdvanced C# topics.',
+        'dotnetcore-gettingstarted': '# .NET Core Getting Started\n\nHow to get started with .NET Core.',
+        'dotnetcore-webapi': '# .NET Core WebAPI\n\nBuilding APIs with .NET Core.',
+        'efcore-basics': '# EF Core Basics\n\nEntity Framework Core basics.',
+        'efcore-migrations': '# EF Core Migrations\n\nHow to use migrations in EF Core.',
+        'efcore-m6-one-many': '<a href="https://share.note.sx/jk59dtik#qLacYIJo5WRKc/bXtjjtdLwGKrzTfdUvfENLNwx5ipI" target="_blank">Open: M6 - One-to-Many Relationship</a>',
+        'efcore-module-3': '<a href="https://share.note.sx/mvcrdh64#pvkAacW7jzhQAQQSExnybLf2FU9qGiiWgqvkXfAZwZw" target="_blank">Open: M3 - Module 3</a>',
+        'efcore-m10-one-to-one': '<a href="https://share.note.sx/9j7zbogz#0kT9oAKNiWj587KaU5eOGoWO08svkYrL0QTXIp0aZeY" target="_blank">Open: M10 - One-to-One Relationship</a>',
+        'efcore-m7-logging': '<a href="https://share.note.sx/1gf2senf#MDnXmbgWitSvRXC7aNuIEak41m2WDILpo7KvhIOjE+k" target="_blank">Open: M7 - Logging SQL & EF Core Activity</a>',
+        'efcore-m5-migrations': '<a href="https://share.note.sx/dxryl2c9#qqaPw3dAde4/zeIqQE1LvHI2xbUCNAqSRR8U5DKlkvg" target="_blank">Open: M5 - Migrations</a>',
+        'efcore-m4-tracking': '<a href="https://share.note.sx/2si6g77d#AyWMB5qx40xmevYpBvkFGjmjikP67vChvNSklM9xfMc" target="_blank">Open: M4 - Tracking and Saving Data</a>',
+        'efcore-module-2': '<a href="https://share.note.sx/pym66kar#85MJQ2hQV/51Rqtu+EV18ahLaGzvhRo0cfOvmdAbRE4" target="_blank">Open: M2 - Module 2</a>',
+        'efcore-m9-many-to-many': '<a href="https://share.note.sx/pcgun9x5#xNFtuuLO06OS26DKHkdDEqXTuN0MvG/GoxqeSlZbUlU" target="_blank">Open: M9 - Many-to-Many Relationships</a>',
+        'efcore-m8-adding-related': '',
+        'efcore-m8-eager-loading': '',
+        'efcore-m8-projection': '',
+        'efcore-m8-loading-in-memory': '',
+        'efcore-m8-filtering': '',
+        'efcore-m8-modifying': '',
+        'efcore-m8-deleting': ''
+    };
+
+    const efCoreLinks = {
+        'efcore-m6-one-many': 'https://share.note.sx/jk59dtik#qLacYIJo5WRKc/bXtjjtdLwGKrzTfdUvfENLNwx5ipI',
+        'efcore-module-3': 'https://share.note.sx/mvcrdh64#pvkAacW7jzhQAQQSExnybLf2FU9qGiiWgqvkXfAZwZw',
+        'efcore-m10-one-to-one': 'https://share.note.sx/9j7zbogz#0kT9oAKNiWj587KaU5eOGoWO08svkYrL0QTXIp0aZeY',
+        'efcore-m7-logging': 'https://share.note.sx/1gf2senf#MDnXmbgWitSvRXC7aNuIEak41m2WDILpo7KvhIOjE+k',
+        'efcore-m5-migrations': 'https://share.note.sx/dxryl2c9#qqaPw3dAde4/zeIqQE1LvHI2xbUCNAqSRR8U5DKlkvg',
+        'efcore-m4-tracking': 'https://share.note.sx/2si6g77d#AyWMB5qx40xmevYpBvkFGjmjikP67vChvNSklM9xfMc',
+        'efcore-module-2': 'https://share.note.sx/pym66kar#85MJQ2hQV/51Rqtu+EV18ahLaGzvhRo0cfOvmdAbRE4',
+        'efcore-m9-many-to-many': 'https://share.note.sx/pcgun9x5#xNFtuuLO06OS26DKHkdDEqXTuN0MvG/GoxqeSlZbUlU',
+        'efcore-m8-adding-related': 'https://share.note.sx/ghbuit7g#x/a7w5tJe76gJgqO/sR9s0qjpm9NF5aaCm6XIKJcn6A',
+        'efcore-m8-eager-loading': 'https://share.note.sx/dk66rnpv#4SS5TajHF93dY+NmWtzBLgYBZURwRjBDFhAIYqPlbvE',
+        'efcore-m8-projection': 'https://share.note.sx/3ftmwe23#I1GV80IWkutWaT3l0LbxTs3oWj9vnOdjcp5ossY5aBI',
+        'efcore-m8-loading-in-memory': 'https://share.note.sx/zmxxvrml#5jwVXtz/CeRwbpvWHVjOyeOyC9rSiHAFxjz6LTWqs8k',
+        'efcore-m8-filtering': 'https://share.note.sx/k9bjoexn#+jna0ih28Jxoqev1bGMYx+zr4F9hmu4csoUP1YqHcd8',
+        'efcore-m8-modifying': 'https://share.note.sx/hstbcfyq#oQlyo9W7tNFeWPkIgIypJKyU05599AhcnoFcpQC5FdM',
+        'efcore-m8-deleting': 'https://share.note.sx/uyuubv2q#BjlrlKEBcoqptADeS6THe6StvTUU6govtp2G1Pi/IAU',
+        'efcore-m11-overview': 'https://share.note.sx/f87og537#Tllw18TEsDGH+DB5NxchO7zjby7dWeU58R7c+LSX1nU',
+        'efcore-m11-querying-sql': 'https://share.note.sx/osp2eca0#nVJbGjTTTY4rOfrMh7hLZNI1BiO3/GSd/c2TzEwGA6s',
+        'efcore-m11-adding-storedprocedures': 'https://share.note.sx/ii1wqdto#V4LsnFnfVm7t0I5HCLL+J4ahTuSI7dtTwXFsEexnAG8',
+        'efcore-m11-querying-scalars': 'https://share.note.sx/j7iwuzaa#VYCi9xidq5sik/ZFzUHU82mLFDFDHc3QLCchqeOrg28',
+        'efcore-m11-views-keyless': 'https://share.note.sx/zrb1c469#YO1ZC859/yl09OtAVebIk7ILHdKpLNzXamR6ZNdRA/c',
+        'efcore-m11-nonquery-sql': 'https://share.note.sx/xhzj0lg9#9auhr1p5Cp6J/S7zM4wOF9tW5haEPdp5zYzdhLkgqlU',
+        'efcore-m11-override-dbset': 'https://share.note.sx/u2v6pdqr#wl20zRoZFfKnD/VwrwUpBkQihf3x2wztC09pmSi8/UE'
+    };
+
+    document.querySelectorAll('.file').forEach(el => {
+        el.addEventListener('click', function() {
+            const key = this.getAttribute('data-file');
+            const mainContent = document.querySelector('main');
+            if (efCoreLinks[key]) {
+                mainContent.innerHTML = `
+                    <div class="iframe-note-container">
+                        <iframe src="${efCoreLinks[key]}" allowfullscreen></iframe>
+                        <a href="${efCoreLinks[key]}" target="_blank" class="external-note-btn">Open in New Tab</a>
+                    </div>
+                `;
+            } else {
+                const content = notes[key] || 'Note not found.';
+                mainContent.innerHTML = '<pre>' + content + '</pre>';
+            }
+        });
+    });
+
+    // Collapsible folders
+    document.querySelectorAll('.folder').forEach(folder => {
+        folder.classList.add('collapsed');
+        folder.classList.remove('expanded');
+        folder.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const isCollapsed = this.classList.toggle('collapsed');
+            this.classList.toggle('expanded', !isCollapsed);
+        });
+    });
+
+    // Dark mode toggle
+    const darkToggle = document.getElementById('darkModeToggle');
+    darkToggle.addEventListener('change', function() {
+        document.body.classList.toggle('dark', this.checked);
+        localStorage.setItem('darkMode', this.checked ? '1' : '0');
+    });
+
+    // Persist dark mode
+    if (localStorage.getItem('darkMode') === '1') {
+        darkToggle.checked = true;
+        document.body.classList.add('dark');
+    }
+    </script>
+</body>
+</html>
