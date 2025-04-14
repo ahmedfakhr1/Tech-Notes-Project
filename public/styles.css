@@ -1,16 +1,15 @@
 /* Unified color palette for a minimal and cohesive design */
 :root {
-    --bg: #f4f4f4; /* Light gray background */
+    --bg: #f9f9f9; /* Light neutral background */
     --text: #333333; /* Dark gray text */
     --accent: #007acc; /* Blue accent */
     --accent-hover: #005f99; /* Darker blue for hover */
     --card-bg: #ffffff; /* White for cards */
-    --card-border: #dddddd; /* Light gray for borders */
+    --card-border: #e0e0e0; /* Subtle light gray for borders */
     --button-bg: var(--accent);
     --button-text: #ffffff; /* White text for buttons */
     --button-hover: var(--accent-hover);
     --shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    --font: 'Arial', sans-serif; /* Clean sans-serif font */
 }
 
 body {
@@ -20,10 +19,12 @@ body {
     margin: 0;
     background: var(--bg);
     color: var(--text);
-    font-family: var(--font);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
     transition: background 0.3s, color 0.3s;
     position: relative;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 main {
@@ -127,10 +128,27 @@ main {
     margin-bottom: 1em;
 }
 
-.dark-toggle input[type="checkbox"] {
-    margin-right: 8px;
+.dark-toggle label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 }
 
+.dark-toggle input[type="checkbox"] {
+    display: none;
+}
+
+.dark-toggle .icon {
+    font-size: 1.2rem;
+    margin-right: 0.5em;
+    transition: transform 0.3s ease;
+}
+
+.dark-toggle input[type="checkbox"]:checked + label .icon {
+    transform: rotate(180deg);
+}
+
+/* Ensure dark mode styles are applied correctly */
 body.dark {
     background: #181818;
     color: #e0e0e0;
@@ -156,6 +174,11 @@ body.dark .file:hover {
 
 body.dark #note-content pre {
     background: #232323;
+    color: #e0e0e0;
+}
+
+body.dark .footer {
+    background-color: #232323;
     color: #e0e0e0;
 }
 
@@ -211,14 +234,59 @@ body.dark #note-content pre {
 
 .hero {
     text-align: center;
-    margin: 2rem 0 1.5rem 0;
+    margin: 40px auto;
+    padding: 20px;
+    animation: fadeIn 1.5s ease;
+    background: linear-gradient(135deg, #007acc 0%, #005f99 100%);
+    color: #ffffff;
+    border-radius: 8px;
 }
 
 .hero h1 {
-    font-size: 2.5rem;
-    color: var(--accent);
-    margin-bottom: 0.2em;
-    letter-spacing: 1px;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 0.5em;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+}
+
+.hero h1 span {
+    position: relative;
+    display: inline-block;
+}
+
+.hero h1 span::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, #ff0000, #ff7300, #ffeb00, #47ff00, #00ffee, #2b65ff, #8000ff, #ff0080);
+    background-size: 200%;
+    z-index: -1;
+    animation: letterHalo 4s linear infinite;
+    filter: blur(4px);
+    border-radius: 4px;
+}
+
+@keyframes letterHalo {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #e0e0e0;
 }
 
 .hero-intro {
@@ -236,12 +304,13 @@ body.dark #note-content pre {
     padding: 0.7em 1.5em;
     font-size: 1rem;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: transform 0.2s ease, background 0.3s ease;
     box-shadow: var(--shadow);
 }
 
 .hero-buttons button:hover {
     background: var(--button-hover);
+    transform: scale(1.05);
 }
 
 .search-section {
@@ -297,6 +366,12 @@ body.dark #note-content pre {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.note-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .note-title {
@@ -332,6 +407,28 @@ body.dark #note-content pre {
 .note-actions button:hover {
     background: var(--accent);
     color: #fff;
+}
+
+/* Enhance button styles */
+button {
+    background: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: 6px;
+    padding: 0.7em 1.5em;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: var(--shadow);
+}
+
+button:hover {
+    background: var(--button-hover);
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
 }
 
 .features-section {
@@ -409,21 +506,27 @@ body.dark #note-content pre {
 
 .footer {
     text-align: center;
-    /* background-color: var(--card-bg); */
+    font-size: 0.9em;
     padding: 1em 0;
     width: 100%;
     position: fixed;
     bottom: 0;
     left: 0;
+    /* background-color: var(--card-bg); */
     box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
-    color: #777777; /* Light gray for footer text */
-    font-size: 1em;
+    border-top: 1px solid var(--card-border);
+    color: #777;
+}
+
+.footer-links {
+    margin-top: 0.5em;
 }
 
 .footer-links a {
     color: var(--accent);
     text-decoration: none;
-    margin: 0 0.3em;
+    margin: 0 0.5em;
+    font-size: 0.9em;
 }
 
 .footer-links a:hover {
@@ -457,4 +560,86 @@ body::before {
     .notes-cards { flex-direction: column; align-items: center; }
     .about-content { flex-direction: column; }
     .tech-stack-grid { flex-direction: column; }
+}
+
+/* Add fade-in animation for hero section */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .hero-buttons button {
+        padding: 0.5em 1em;
+        font-size: 0.9rem;
+    }
+
+    .about-content {
+        flex-direction: column;
+        gap: 1em;
+    }
+
+    .about-photo {
+        width: 60px;
+        height: 60px;
+    }
+
+    .tech-stack-grid {
+        flex-direction: column;
+        gap: 0.8em;
+    }
+
+    .notes-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .note-card {
+        width: 90%;
+        max-width: none;
+    }
+
+    .footer {
+        font-size: 0.9em;
+        padding: 0.8em 0;
+    }
+}
+
+/* Typography enhancements */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: var(--text);
+}
+
+p {
+    font-size: 1rem;
+    color: #555;
+}
+
+a {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--accent-hover);
 }
