@@ -247,41 +247,6 @@ body.dark .footer {
     font-weight: bold;
     color: #ffffff;
     margin-bottom: 0.5em;
-    position: relative;
-    z-index: 1;
-    display: inline-block;
-}
-
-.hero h1 span {
-    position: relative;
-    display: inline-block;
-}
-
-.hero h1 span::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, #ff0000, #ff7300, #ffeb00, #47ff00, #00ffee, #2b65ff, #8000ff, #ff0080);
-    background-size: 200%;
-    z-index: -1;
-    animation: letterHalo 4s linear infinite;
-    filter: blur(4px);
-    border-radius: 4px;
-}
-
-@keyframes letterHalo {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
 }
 
 .hero p {
