@@ -455,6 +455,7 @@ button:active {
 .about-section {
     margin: 2.5rem 0 1.5rem 0;
     text-align: center;
+    margin-bottom: 100px; /* Add spacing to prevent overlap */
 }
 
 .about-content {
@@ -465,11 +466,32 @@ button:active {
     margin-top: 1em;
 }
 
+.photo-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+}
+
 .about-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    border: 2px solid var(--accent);
+    border: 4px solid #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.uni-logo {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    bottom: -10px;
+    left: -10px;
+    z-index: 1;
 }
 
 .about-socials a {
@@ -481,6 +503,38 @@ button:active {
 
 .about-socials a:hover {
     text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .photo-container {
+        width: 120px;
+        height: 120px;
+    }
+
+    .uni-logo {
+        width: 50px;
+        height: 50px;
+        bottom: -5px;
+        left: -5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .photo-container {
+        width: 100px;
+        height: 100px;
+    }
+
+    .uni-logo {
+        width: 40px;
+        height: 40px;
+    }
 }
 
 .tech-stack-section {
@@ -509,9 +563,9 @@ button:active {
 .footer {
     text-align: center;
     font-size: 0.9em;
-    padding: 1em 0;
+    padding: 20px 0;
     width: 100%;
-    position: fixed;
+    position: relative;
     bottom: 0;
     left: 0;
     background-color: var(--bg-primary);
