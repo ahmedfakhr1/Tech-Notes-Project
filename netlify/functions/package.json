@@ -1,0 +1,9 @@
+{
+  "name": "node-server-project",
+  "version": "1.0.0",
+  "description": "Serverless notebook project for Netlify.",
+  "main": "fetch-note.js",
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  }
+}

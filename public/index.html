@@ -595,10 +595,11 @@
             const key = this.getAttribute('data-file');
             const mainContent = document.querySelector('main');
             if (efCoreLinks[key]) {
-                mainContent.innerHTML = `
-                    <div class="iframe-note-container">
-                        <iframe src="${efCoreLinks[key]}" allowfullscreen></iframe>
-                        <a href="${efCoreLinks[key]}" target="_blank" class="external-note-btn">Open in New Tab</a>
+                // Render iframe and course info, and keep course info synced with the selected note
+                let courseInfoHtml = '';
+                if (key.startsWith('dotnet-')) {
+                    // .NET Core course info
+                    courseInfoHtml = `
                         <div class="course-info">
                             <div class="course-info-header" onclick="this.parentElement.classList.toggle('expanded')">
                                 <h3>
@@ -608,28 +609,92 @@
                                 <i class="fas fa-chevron-down toggle-icon"></i>
                             </div>
                             <div class="course-info-content">
-                                ${key.startsWith('dotnet-') ? `
                                 <p style="margin: 0 0 10px 0;">
-                                    <strong>Course:</strong> ASP.NET Core For Beginners
-                                    <br>
-                                    <strong>Creator:</strong> Passionate Coders | محمد المهدي
-                                    <br>
-                                    <strong>Platform:</strong> YouTube
-                                    <br>
+                                    <strong>Course:</strong> ASP.NET Core For Beginners<br>
+                                    <strong>Creator:</strong> Passionate Coders | محمد المهدي<br>
+                                    <strong>Platform:</strong> YouTube<br>
                                     <a href="https://www.youtube.com/playlist?list=PLsV97AQt78NQ8E7cEqovH0zLYRJgJahGh" target="_blank">Watch on YouTube</a>
                                 </p>
                                 <p style="margin: 0;">
                                     A beginner-friendly playlist on ASP.NET Core, created by Passionate Coders. Perfect for developers 
                                     starting out with modern backend development using Microsoft's .NET platform.
                                 </p>
-                                ` : `
+                            </div>
+                        </div>
+                    `;
+                } else if (key.startsWith('csharp-fundamentals')) {
+                    // C# Fundamentals course info
+                    courseInfoHtml = `
+                        <div class="course-info">
+                            <div class="course-info-header" onclick="this.parentElement.classList.toggle('expanded')">
+                                <h3>
+                                    <i class="fas fa-graduation-cap"></i>
+                                    About This Course
+                                </h3>
+                                <i class="fas fa-chevron-down toggle-icon"></i>
+                            </div>
+                            <div class="course-info-content">
                                 <p style="margin: 0 0 10px 0;">
-                                    <strong>Course:</strong> Entity Framework Core 8 Fundamentals
-                                    <br>
-                                    <strong>Author:</strong> Julie Lerman
-                                    <br>
-                                    <strong>Platform:</strong> Pluralsight
-                                    <br>
+                                    <strong>Course:</strong> C# Fundamentals<br>
+                                    <strong>Platform:</strong> YouTube<br>
+                                    <a href="https://www.youtube.com/playlist?list=PLsV97AQt78NT0H8J71qe7edwRpAirfqOI" target="_blank">Watch on YouTube</a>
+                                </p>
+                                <p style="margin: 0;">
+                                    A complete beginner-to-intermediate C# course covering all the fundamentals you need to get started.
+                                </p>
+                            </div>
+                        </div>
+                    `;
+                } else if (
+                    key.startsWith('csharp-advanced') ||
+                    key === 'csharp-enumerables' ||
+                    key === 'csharp-extension-methods' ||
+                    key === 'csharp-generics' ||
+                    key === 'csharp-linq-intro' ||
+                    key === 'csharp-linq-joins-grouping' ||
+                    key === 'csharp-linq-sorting' ||
+                    key === 'csharp-linq-quantifiers' ||
+                    key === 'csharp-operator-overloading' ||
+                    key === 'csharp-advanced-topics'
+                ) {
+                    // C# Advanced course info
+                    courseInfoHtml = `
+                        <div class="course-info">
+                            <div class="course-info-header" onclick="this.parentElement.classList.toggle('expanded')">
+                                <h3>
+                                    <i class="fas fa-graduation-cap"></i>
+                                    About This Course
+                                </h3>
+                                <i class="fas fa-chevron-down toggle-icon"></i>
+                            </div>
+                            <div class="course-info-content">
+                                <p style="margin: 0 0 10px 0;">
+                                    <strong>Course:</strong> C# Advanced<br>
+                                    <strong>Platform:</strong> YouTube<br>
+                                    <a href="https://www.youtube.com/playlist?list=PLsV97AQt78NQYhO7NqlBTrJX_Nsk3SmyY" target="_blank">Watch on YouTube</a>
+                                </p>
+                                <p style="margin: 0;">
+                                    Deep dive into advanced C# topics, LINQ, generics, extension methods, and more for experienced developers.
+                                </p>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    // EF Core course info
+                    courseInfoHtml = `
+                        <div class="course-info">
+                            <div class="course-info-header" onclick="this.parentElement.classList.toggle('expanded')">
+                                <h3>
+                                    <i class="fas fa-graduation-cap"></i>
+                                    About This Course
+                                </h3>
+                                <i class="fas fa-chevron-down toggle-icon"></i>
+                            </div>
+                            <div class="course-info-content">
+                                <p style="margin: 0 0 10px 0;">
+                                    <strong>Course:</strong> Entity Framework Core 8 Fundamentals<br>
+                                    <strong>Author:</strong> Julie Lerman<br>
+                                    <strong>Platform:</strong> Pluralsight<br>
                                     <strong>Level:</strong> Intermediate
                                 </p>
                                 <p style="margin: 0;">
@@ -637,9 +702,15 @@
                                     This comprehensive course covers everything from basic concepts to advanced techniques in data modeling, 
                                     querying, and managing relationships in .NET applications.
                                 </p>
-                                `}
                             </div>
                         </div>
+                    `;
+                }
+                mainContent.innerHTML = `
+                    <div class="iframe-note-container">
+                        <iframe src="${efCoreLinks[key]}" allowfullscreen></iframe>
+                        <a href="${efCoreLinks[key]}" target="_blank" class="external-note-btn">Open in New Tab</a>
+                        ${courseInfoHtml}
                     </div>
                 `;
             } else {
